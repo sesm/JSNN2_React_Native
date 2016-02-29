@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal.js – The HTML Presentation Framework</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>React Native</h1>
+					<p>
+						<small>Sergey Smyshlyaev / <a href="http://twitter.com/sesm_">@sesm_</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>About me</h2>
+					<p>1 year experience with React, big project from scratch </p>
+					<p>1 mo experience with React Native, joined existing project</p>
+					<p class="fragment">For cutting edge tech it still counts as experience :)</p>
+					<p></p>
+				</section>
+
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						<h2>Show of hands</h2>
+						<p class="fragment">React</p>
+						<p class="fragment">ES6</p>
+						<p class="fragment">Flexbox</p>
+					</section>
+					<section>
+						<h2>Show of hands</h2>
+						<p class="fragment">Cordova/Phonegap/Ionic</p>
+						<p class="fragment">Xamarin/RoboVM/other hybrid</p>
+						<p class="fragment">Native iOS</p>
+						<p class="fragment">Native Android</p>
+					</section>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+						## Web dev vs mobile dev
+
+						| Web                         | Mobile                       |
+						| --------------------------- | ---------------------------- |
+						| Cross platform              | Platform lock-in             |
+						| Community-driven            | Vendor-driven                |
+						| Instant reloading           | Compiling                    |
+						| Easy distribution           | App store review cycle       |
+						| Automatic layout is default | Interface builder is default |
+						| Declarative UI (React)      | Mostly imperative            |
+
+					</script>
+				</section>
+
+				<section>
+					<h2>WebView</h2>
+					<p class="fragment">+ can use all the libs</p>
+					<p class="fragment">- non-native look and feel       </p>
+					<p class="fragment">- gesture handling               </p>
+					<p class="fragment">- limited use of HW acceleration </p>
+					<p class="fragment">- too much work for one JS thread</p>
+				</section>
+
+				<section>
+					<h2>WebView examples</h2>
+					<p><a href="https://cordova.apache.org/">Apache Cordova</a></p>
+					<p>Built on top of Cordova:</p>
+					<p><a href="http://phonegap.com/">Phonegap</a></p>
+					<p><a href="http://ionicframework.com/">Ionic</a></p>
+					<p>(etc)</p>
+				</section>
+
+				<section>
+					<h2>Scripting native</h2>
+					<p class="fragment">+ can use native widgets, APIs, gestures, etc</p>
+					<p class="fragment">+ animation runs in native code</p>
+					<p class="fragment">- challenging (see further)</p>
+				</section>
+
+				<section>
+					<section>
+                        <h2>Hybrid, non-JS</h2>
+                        <p><a href="https://xamarin.com/platform">Xamarin ($$$, C#)</a></p>
+                        <p><a href="https://robovm.com/">RoboVM ($$$, Java)</a></p>
+                        <p>(etc)</p>
+					</section>
+					<section>
+						<h2>Hybrid, JS</h2>
+                        <p>React Native <3</p>
+                        <p><a href="http://phonegap.com/">NativeScript (TypeScript, Angular)</a></p>
+                        <p><a href="https://tabrisjs.com/">TabrisJS ($$$)</a></p>
+						<p><a href="https://trigger.io/">TriggerIO ($$$)</a></p>
+                        <p>(etc)</p>
+					</section>
+				</section>
+
+				<section>
+					<h2>Scripting native is hard</h2>
+					<p class="fragment">Sync calls between native and JS will block native execution, so need to run JS in separate thread</p>
+					<p class="fragment">but...</p>
+					<p class="fragment">- resource contention (i.e. accessing native element props), need to block</p>
+					<p class="fragment">- calls between JS and native are costly.</p>
+					<p class="fragment">React offers async rendering model, that solves both problems!</p>
+				</section>
+
+			    <section>
+					<h2>Architecture</h2>
+					<p>JS thread: component lifecycle, JS libs</p>
+					<p>Bridge</p>
+					<p>Native UI thread: layout, animation, native component rendering</p>
+					<p>Native auxilary threads: image decoding, native API</p>
+				</section>
+
+			    <section>
+					<h2>Sharing experience, not code</h2>
+					<p class="fragment">Layout system is subset of web, but FlexBox only.</p>
+					<p class="fragment">Styling similar to inline styles.</p>
+					<p class="fragment">Running the same React as in web, using JSX for views.</p>
+					<p class="fragment">Use React ecosystem (Redux with all middleware, etc).</p>
+					<p class="fragment">Use JS libs, that are not browser or node.js specific.</p>
+				</section>
+
+				<section>
+					<h2>Development experience</h2>
+					<p>Actually pretty good!</p>
+					<p class="fragment">[here comes the demo]</p>
+				</section>
+
+				<section>
+					<h2>State of React Native</h2>
+					<p>Needs community outside of FB</p>
+					<p>Become a contributor, low hangings fruits are waiting</p>
+				</section>
+
+				<section>
+					<h2>Resources</h2>
+				    <h3>React</h3>
+					<p><a href="https://facebook.github.io/react/">Official docs/tutorial</a></p>
+					<p><a href="https://github.com/petehunt/react-howto">Best guide to ecosystem</a></p>
+					<h3>React Native</h3>
+					<p><a href="https://facebook.github.io/react-native/">Official docs/tutorial</a></p>
+					<p><a href="https://react.parts/native">3rd party components</a></p>
+					<p><a href="https://rnplay.org">Playground</a></p>
+				</section>
+
+				<section>
+					<h1>Thanks!</h1>
+					<p><small>Contact me (Qs about React/React Native welcome)</small></p>
+					<div style="text-align: left">
+					<p><small>  Twitter: @sesm_                               </small></p>
+					<p><small>  E-mail: sergey.smyshlyaev@gmail.com           </small></p>
+					<p><small>  Telegram: @sergey_smyshlyaev                  </small></p>
+					<p><small>  VK: vk.com/id115992                           </small></p>
+					</div>
+				</section>
+
+				<section>
+					<h1>Questions?</h1>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
