@@ -6,7 +6,7 @@ Source code from live-coding presentation performed at [Nizhny Novgorod JS meetu
 
 [Video](https://www.youtube.com/watch?v=FLSrZwPYWeg)
 
-You can watch the code in action at [React Native playground](https://rnplay.org/apps/x_g_ew)
+You can see the code in action at [React Native playground](https://rnplay.org/apps/x_g_ew)
 
 ## To run the code locally
 
